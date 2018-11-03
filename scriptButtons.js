@@ -1,5 +1,5 @@
 var position = 0, test, test_status, question, userChoice,choices, chA,chB,chC,chD;
-var message='';
+var printAnswer='';
 var correct = 0;
 
 function _(x){
@@ -11,7 +11,7 @@ function renderQuestion(){
     if(position>=questions.length){
         test.innerHTML = "<h2>You got "+ correct + " of "+ questions.length + " questions correct</h2>";
         _('test_status').innerHTML='Test completed';
-        _('question_response').innerHTML=message;
+        _('question_response').innerHTML= printAnswer;
         position=0;
         correct=0;
         return false //stop renderQuestion function continuing after this line
@@ -25,20 +25,15 @@ function renderQuestion(){
     chC=questions[position][3];
     chD=questions[position][4];
 
-    test.innerHTML ="<h3 id='question'>"+ question +"</h3>"
-    test.innerHTML += "<label class='container'>" + chA +"<input type='radio' name='choices' value='A'>" 
-        + "<span class='checkmark'></span></label>";
-    test.innerHTML += "<label class='container'>" + chB +"<input type='radio' name='choices' value='B'>" 
-        + "<span class='checkmark'></span></label>";
-    test.innerHTML += "<label class='container'>" + chC +"<input type='radio' name='choices' value='C'>" 
-        + "<span class='checkmark'></span></label>";
-    test.innerHTML += "<label class='container'>" + chD +"<input type='radio' name='choices' value='D'>" 
-        + "<span class='checkmark'></span></label><br/>";
-   /*  test.innerHTML += "<input type='radio' name='choices' value='B'>" + chB + "<br/>";
-    test.innerHTML += "<input type='radio' name='choices' value='C'>" + chC + "<br/>";
-    test.innerHTML += "<input type='radio' name='choices' value='D'>" + chD + "<br/>"; */
-    test.innerHTML += "<button onclick='checkAnswer()'><span>Next</span></button>";
+    test.innerHTML ="<h2>"+ question +"</h2>"
+    test.innerHTML += "<button class='option-btn' name='choices' value='A' onclick='checkAnswer()'>" + chA + "</button>";
+    test.innerHTML += "<button class='option-btn' name='choices' value='B' onclick='checkAnswer()'>" + chB + "</button>";
+    test.innerHTML += "<button class='option-btn' name='choices' value='C' onclick='checkAnswer()'>" + chC + "</button>";
+    test.innerHTML += "<button class='option-btn' name='choices' value='D' onclick='checkAnswer()'>" + chD + "</button>";
+    //test.innerHTML += "<button onclick='goToPrevQu()'>Go previous</button>"
+    //test.innerHTML += "<button onclick='goToNextQu()'>Go next</button>";
 }
+//function goToNextQu(){}
 
 function checkAnswer(){
     //look through group of /choices/ to see which choice is selected by a user
@@ -46,14 +41,17 @@ function checkAnswer(){
     for(var i = 0; i < choices.length;i++){
         if(choices[i].checked){
             userChoice=choices[i].value;
-            message += '<p>'+ userChoice + '</p>';
+            printAnswer += '<p>' + userChoice + '</p>';
         }        
     }
+    
     if(userChoice == questions[position][5]){
         correct ++;
         _('question_response').innerHTML='<h3> Correct Answer</h3>';
     }else{
-        _('question_response').innerHTML='<h3>Sorry</h3>';
+       _('question_response').innerHTML='<h3>Sorry</h3>';
+        
+        
     }
     position=position +1;
     renderQuestion();
