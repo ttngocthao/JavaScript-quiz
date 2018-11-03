@@ -1,0 +1,77 @@
+*{
+    box-sizing: content-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main-container{
+    margin: 5px auto;
+    width: 75%;
+    box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.699);
+    background-image: linear-gradient(to bottom right, rgb(255, 245, 246),pink,rgb(250, 133, 152),rgb(253, 43, 78));
+    height: 500px;
+}
+#test{
+    width:800px;
+    margin: 10px auto;
+}
+h3#test_status {
+    text-align: left;
+    padding: 10px 20px;
+    margin: 5px 0px;
+    background-color: rgb(240, 255, 255,0.6);
+   /* background-image: linear-gradient(to right, rgba(0, 0, 255, 0.76) , rgba(255, 255, 255, 0.733) ,rgba(255, 0, 0, 0.74) );*/
+    position: relative;
+    top: 20px;
+}
+/*next question btn*/
+button {
+    text-align: center;
+    margin: 20px auto;
+    border-radius: 4px;
+    display: block;
+    width: 200px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+button span{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+/*add arrow, only showed when mouse hover*/
+button span:after{
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top:0;
+    right: -20px;
+    transition: 0.5s;
+}
+/*mouse over, show the arrow*/
+button:hover span{
+    padding-right: 25px;
+}
+button:hover span:after{
+    opacity:1;
+    right: 0;
+}
+
+/*------------------------------------------------------------*/
+div#arrow {
+    border-right: 8px solid black;
+    border-bottom: 8px solid black;
+    width: 20px;
+    height: 20px;
+    transform: rotate(-45deg);
+    margin-top: 40px;
+    position: absolute;
+    top: 0;
+    /* align-items: center; */
+    left: 40%;
+}
+h3#question{
+    text-align: center;
+    margin-top: 50px;
+}
